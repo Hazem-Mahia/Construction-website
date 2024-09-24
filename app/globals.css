@@ -2,26 +2,174 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+h1 {
+  @apply text-5xl leading-tight;
+  @apply md:text-7xl md:leading-tight;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+h2 {
+  @apply text-4xl leading-tight;
+  @apply md:text-6xl md:leading-tight;
+}
+
+h3 {
+  @apply text-3xl leading-snug;
+}
+
+h4 {
+  @apply text-2xl leading-snug;
+}
+
+h5 {
+  @apply text-xl leading-normal;
+}
+
+p {
+  @apply text-lg leading-relaxed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-black;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply font-sans;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.embla {
+  max-width: 48rem;
+  margin: auto;
+  height: 19rem; /* ثابت بدل --slide-height */
+  padding-left: 1rem; /* ثابت بدل --slide-spacing */
+  width: 100%; /* ثابت بدل --slide-size */
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 100%; /* ثابت بدل --slide-size */
+  min-width: 0;
+  padding-left: 1rem; /* ثابت بدل --slide-spacing */
+}
+
+.embla__slide__number {
+  box-shadow: inset 0 0 0 0.2rem #6e6e6e; /* ثابت بدل --detail-medium-contrast */
+  border-radius: 1.8rem;
+  font-size: 4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 19rem; /* ثابت بدل --slide-height */
+  user-select: none;
+}
+
+.embla__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.embla__button {
+  -webkit-tap-highlight-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* ثابت بدل --text-high-contrast-rgb-value */
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 0 0 0.2rem #6e6e6e; /* ثابت بدل --detail-medium-contrast */
+  width: 3.6rem;
+  height: 3.6rem;
+  z-index: 1;
+  color: #4d4d4d; /* ثابت بدل --text-body */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.embla__button:disabled {
+  color: #3a3a3a; /* ثابت بدل --detail-high-contrast */
+}
+
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+}
+
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+}
+
+.embla__dot {
+  -webkit-tap-highlight-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* ثابت بدل --text-high-contrast-rgb-value */
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.embla__dot:after {
+  box-shadow: inset 0 0 0 0.2rem #6e6e6e;
+  /*ثابتبدل--detail-medium-contrast*/
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  content: "";
+}
+
+.embla__dot--selected:after {
+  box-shadow: inset 0 0 0 0.2rem #4d4d4d; /* ثابت بدل --text-body */
 }
